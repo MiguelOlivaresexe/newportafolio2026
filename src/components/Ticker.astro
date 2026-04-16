@@ -1,0 +1,20 @@
+---
+// Comentario en espanol mexicano: este componente o pagina arma una seccion del portafolio.
+// Archivo: Ticker.astro
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<div class="ticker-container bg-rich-blue text-pale-gray">
+  <div class="ticker-content">
+    {[...Array(10)].map(() => (
+      <span class="text-6xl md:text-8xl font-bold uppercase mx-4 whitespace-nowrap text-accent-blue">
+        {text} <span class="text-accent-blue font-light mx-8">*</span>
+      </span>
+    ))}
+  </div>
+</div>
+ 

@@ -1,0 +1,55 @@
+---
+// Comentario en espanol mexicano: este componente o pagina arma una seccion del portafolio.
+// Archivo: CertificationCard.astro
+interface Props {
+  name: string;
+  issuer: string;
+  date: string;
+  icon?: string;
+  index: number;
+}
+
+const { name, issuer, date, icon, index } = Astro.props;
+const serial = String(index + 1).padStart(2, '0');
+const accentClass = index % 2 === 0 ? 'bg-white/10' : 'bg-white/5';
+---
+
+<article class:list={[
+  'group relative h-full overflow-hidden border border-[#F0EEE9]/12 p-6 md:p-8 text-[#F0EEE9] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#F0EEE9]/20 hover:shadow-[0_22px_44px_-32px_rgba(0,0,0,0.45)]',
+  accentClass
+]}>
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F0EEE9]/12 to-transparent"></div>
+  <div class="pointer-events-none absolute right-5 top-5 text-5xl font-black leading-none tracking-[-0.08em] text-[#F0EEE9]/8 md:text-7xl">{serial}</div>
+
+  <div class="relative z-10 flex h-full flex-col gap-6">
+    <div class="flex items-center justify-between gap-3 border-b border-[#F0EEE9]/12 pb-4">
+      <div class="inline-flex items-center gap-2 bg-white/8 px-3 py-1.5">
+        <span class="h-1.5 w-1.5 rounded-full bg-[#F0EEE9]/60"></span>
+        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#F0EEE9]/70">{issuer}</span>
+      </div>
+      <span class="text-[10px] font-mono tracking-[0.2em] text-[#F0EEE9]/40">CERT-{serial}</span>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-[10px] font-black uppercase tracking-[0.28em] text-[#F0EEE9]/45">Credential</p>
+      <h3 class="max-w-[16ch] text-2xl font-black leading-[0.95] tracking-tight text-[#F0EEE9] md:text-3xl">
+        {name}
+      </h3>
+    </div>
+
+    <div class="mt-auto space-y-4">
+      <div class="h-px w-14 bg-[#F0EEE9]/20 transition-all duration-300 group-hover:w-24"></div>
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          {icon && (
+            <span class="inline-flex h-6 min-w-6 items-center justify-center bg-white/8 px-1.5 text-[9px] font-black uppercase tracking-wide text-[#F0EEE9]/60">{icon.slice(0, 3)}</span>
+          )}
+          <span class="text-xs font-bold uppercase tracking-[0.16em] text-[#F0EEE9]/55">Issued {date}</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="round" class="text-[#F0EEE9]/35 transition-all duration-300 group-hover:text-[#F0EEE9] group-hover:translate-x-0.5">
+          <path d="M7 17L17 7M17 7H7M17 7V17"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</article>

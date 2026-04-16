@@ -1,0 +1,17 @@
+---
+// Comentario en espanol mexicano: este componente o pagina arma una seccion del portafolio.
+// Archivo: SkillCard.astro
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  name: string;
+  icon: string;
+}
+
+const { name, icon } = Astro.props;
+---
+
+<div class="flex items-center gap-4 p-4 bg-pale-gray dark:bg-dark-card-background border-2 border-rich-blue/10 dark:border-dark-text/10 rounded-lg">
+  <Icon name={icon} class="w-8 h-8 text-rich-blue dark:text-dark-text" />
+  <span class="text-lg font-bold text-rich-blue dark:text-dark-text uppercase tracking-tight">{name}</span>
+</div>

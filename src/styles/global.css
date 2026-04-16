@@ -1,0 +1,56 @@
+/* Comentario en espanol mexicano: estilos globales y utilidades visuales del portafolio. Archivo: global.css */
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #191265;
+  --color-rich-blue: #191265;
+  --color-pale-gray: #EBEBDF;
+  --color-neutral-text: #191265;
+  --font-display: "Outfit", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: #F0EEE9 !important;
+    color: #191265 !important;
+    @apply font-body;
+  }
+}
+
+@layer components {
+  .ticker-container {
+    @apply overflow-hidden whitespace-nowrap flex py-4 border-y border-black/10;
+  }
+  
+  .ticker-content {
+    @apply flex shrink-0 min-w-full;
+    animation: ticker 30s linear infinite;
+  }
+
+  .project-card {
+    @apply relative overflow-hidden transition-all duration-500 ease-out;
+  }
+
+  .project-image {
+    @apply scale-100 transition-transform duration-700 ease-out grayscale;
+  }
+
+  .project-card:hover .project-image {
+    @apply scale-105 grayscale-0;
+  }
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes slow-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite alternate;
+}

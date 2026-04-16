@@ -1,0 +1,36 @@
+---
+// Comentario en espanol mexicano: este componente o pagina arma una seccion del portafolio.
+// Archivo: CustomCursor.astro
+---
+<div id="cursor" class="fixed top-0 left-0 w-8 h-8 bg-pale-gray rounded-full pointer-events-none z-[10000] mix-blend-difference -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300 hidden md:block"></div>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  
+  document.addEventListener('mousemove', (e) => {
+    if (cursor) {
+      cursor.style.opacity = '1';
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    }
+  });
+
+  document.addEventListener('mouseleave', () => {
+    if (cursor) cursor.style.opacity = '0';
+  });
+
+  // Scale up on links
+  const links = document.querySelectorAll('a, button, .cursor-pointer');
+  links.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      if (cursor) {
+        cursor.style.transform = 'translate(-50%, -50%) scale(3)';
+      }
+    });
+    link.addEventListener('mouseleave', () => {
+      if (cursor) {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      }
+    });
+  });
+</script>

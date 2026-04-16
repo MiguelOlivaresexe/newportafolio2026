@@ -1,0 +1,19 @@
+---
+// Comentario en espanol mexicano: este componente o pagina arma una seccion del portafolio.
+// Archivo: EducationCard.astro
+interface Props {
+  degree: string;
+  institution: string;
+  period: string;
+  description: string;
+}
+
+const { degree, institution, period, description } = Astro.props;
+---
+
+<div class="p-6 border border-neutral-subtle dark:border-dark-subtle-text rounded-lg shadow-sm hover:shadow-md transition-all duration-300 bg-pale-gray dark:bg-dark-card-background">
+  <h3 class="text-xl font-semibold text-neutral-text dark:text-dark-text mb-2">{degree}</h3>
+  <p class="text-neutral-subtle dark:text-dark-subtle-text text-lg mb-1">{institution}</p>
+  <p class="text-neutral-subtle dark:text-dark-subtle-text text-sm mb-4">{period}</p>
+  <p class="text-neutral-text dark:text-dark-text text-base">{description}</p>
+</div>

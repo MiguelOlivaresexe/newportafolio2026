@@ -1,0 +1,55 @@
+---
+// Comentario en espanol mexicano: este componente o pagina arma una seccion del portafolio.
+// Archivo: SkillsTicker.astro
+import { skills } from "../data/skills";
+import SkillCard from "./SkillCard.astro";
+
+interface Props {
+  direction?: "left" | "right";
+}
+
+const { direction = "left" } = Astro.props;
+
+const animationDirection = direction === "left" ? "animate-ticker-left" : "animate-ticker-right";
+
+// Duplicamos los skills para asegurar un bucle infinito y suave
+const extendedSkills = [...skills, ...skills];
+---
+
+<div class="w-full overflow-hidden">
+  <div class:list={["flex w-max", animationDirection]}>
+    {extendedSkills.map((skill) => (
+      <div class="flex-shrink-0 px-4">
+        <SkillCard name={skill.name} icon={skill.icon} />
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  @keyframes ticker-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-ticker-left {
+    animation: ticker-left 40s linear infinite;
+  }
+
+  @keyframes ticker-right {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-ticker-right {
+    animation: ticker-right 40s linear infinite;
+  }
+</style>

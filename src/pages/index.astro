@@ -1,0 +1,931 @@
+---
+// Comentario en espanol mexicano: este componente o pagina arma una seccion del portafolio.
+// Archivo: index.astro
+/**
+ * index.astro
+ * Main portfolio page.
+ * Organizes the different sections: Hero, Skills, Education, Certifications, and Contact.
+ */
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import { Icon } from 'astro-icon/components';
+
+import { skillCategories } from '../data/skills';
+import { education } from '../data/education';
+import EducationCard from '../components/EducationCard.astro';
+import { softSkills } from '../data/softSkills';
+import { languages } from '../data/languages';
+import { workExperience } from '../data/workExperience';
+import WorkTimelineCard from '../components/WorkTimelineCard.astro';
+import { certifications } from '../data/certifications';
+import CertificationCard from '../components/CertificationCard.astro';
+---
+
+<Layout title="MAOH | Minimalist Designer">
+	<main class="bg-pale-gray dark:bg-dark-background">
+		<Navbar />
+		<!-- Hero Section: Swiss Editorial (International Style) -->
+		<section class="relative px-6 min-h-screen flex flex-col py-12 overflow-hidden bg-[#191265]">
+			<!-- Main container with Glassmorphism effect -->
+			<div class="absolute inset-0 pointer-events-none select-none opacity-[0.05]">
+				<div class="absolute inset-0 bg-[linear-gradient(to_right,#F0EEE9_1px,transparent_1px),linear-gradient(to_bottom,#F0EEE9_1px,transparent_1px)] bg-[size:5vw_5vw]"></div>
+			</div>
+			
+			<div class="max-w-[1400px] mx-auto w-full flex-1 flex flex-col relative z-10">
+				<!-- Top Header: Technical Info -->
+				<div class="flex justify-between items-start border-t-2 border-[#F0EEE9] pt-4 mb-12 md:mb-24">
+					<div class="flex flex-col">
+						<span class="text-[10px] font-black uppercase tracking-tighter leading-none text-[#F0EEE9]" data-translate="refPortfolio">Ref. 2026_PORTFOLIO</span>
+						<span class="text-[10px] font-medium text-[#F0EEE9]/60">v2.0.4</span>
+					</div>
+					<div class="hidden md:block">
+						<span class="text-[10px] font-black uppercase tracking-widest text-[#F0EEE9]">Miguel Angel Olivares Hernandez</span>
+					</div>
+					<div class="flex flex-col items-end">
+						<span class="text-[10px] font-black uppercase tracking-tighter leading-none text-[#F0EEE9]">Aguascalientes, MX</span>
+						<span class="text-[10px] font-medium text-[#F0EEE9]/60">11:00 AM CST</span>
+					</div>
+				</div>
+
+				<!-- Main Content: Swiss Typography -->
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end flex-1 pb-12">
+					<div class="lg:col-span-8">
+						<div class="flex flex-col gap-0">
+							<span class="text-xs font-black text-[#F0EEE9] mb-4" data-translate="introduction">01 — INTRODUCTION</span>
+							<h1 class="relative select-none">
+								<span class="block text-[clamp(2.5rem,8vw,6rem)] font-black leading-[0.85] tracking-[-0.06em] text-[#F0EEE9] uppercase font-display">
+									Miguel Angel<br/>Olivares
+								</span>
+								<span class="block text-[clamp(2.5rem,8vw,6rem)] font-black leading-[0.85] tracking-[-0.06em] text-[#F0EEE9] uppercase font-display">
+									Hernandez.
+								</span>
+							</h1>
+						</div>
+					</div>
+
+					<div class="lg:col-span-4 flex flex-col items-start lg:items-end text-left lg:text-right gap-8">
+						<div class="max-w-xs">
+						<p class="text-sm md:text-base font-bold uppercase tracking-tight text-[#F0EEE9] leading-tight mb-4" data-translate="heroSubtitle">
+							IT Professional with experience in local and remote support, software development, and data analysis.
+						</p>
+						<p class="text-xs text-[#F0EEE9]/60 font-medium leading-relaxed" data-translate="heroDescription">
+							I provide reliable IT services aligned with Mexico and U.S. market needs: local and remote support, software development, and data analysis focused on efficiency and measurable business results.
+							</p>
+						</div>
+						
+						<!-- CV Button: Swiss Editorial / Nice Style -->
+						<div class="w-full lg:w-auto mt-4 flex flex-col lg:items-end gap-3">
+							<a href="/Miguel%20Angel%20Olivares%20Hernandez%20%20-%20Curr%C3%ADculum.pdf.pdf" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center gap-4 py-3 px-6 bg-[#F0EEE9] text-[#191265] transition-all duration-300 hover:pr-12 overflow-hidden">
+								<div class="flex flex-col items-start leading-none">
+								<span class="text-[9px] font-black uppercase tracking-[0.2em] opacity-60 mb-1" data-translate="preview">Preview</span>
+								<span class="text-sm font-bold uppercase tracking-tight" data-translate="viewCurriculum">View Curriculum Vitae</span>
+								</div>
+								<div class="relative w-8 h-8 border border-[#191265]/30 flex items-center justify-center overflow-hidden">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="round" class="transform transition-transform duration-300 group-hover:translate-y-8">
+										<path d="M14 3h7v7"/>
+										<path d="M10 14 21 3"/>
+										<path d="M21 14v7h-7"/>
+										<path d="M3 10 14 21"/>
+									</svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="round" class="absolute -top-8 transform transition-transform duration-300 group-hover:translate-y-8">
+										<path d="M14 3h7v7"/>
+										<path d="M10 14 21 3"/>
+										<path d="M21 14v7h-7"/>
+										<path d="M3 10 14 21"/>
+									</svg>
+								</div>
+								<span class="absolute top-0 right-0 text-[8px] font-black p-1 bg-[#191265]/10">PDF</span>
+							</a>
+
+						<a href="/Miguel%20Angel%20Olivares%20Hernandez%20%20-%20Curr%C3%Ículum.pdf.pdf" download class="inline-flex items-center justify-center gap-2 border border-[#F0EEE9]/35 px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#F0EEE9] transition-colors duration-300 hover:bg-[#F0EEE9] hover:text-[#191265]" data-translate="downloadPdf">
+								Download PDF
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Hero Footer: Closing Line -->
+				<div class="mt-auto flex items-end justify-between border-b-2 border-[#F0EEE9] pb-4">
+					<div class="flex gap-12">
+						<div class="flex flex-col">
+						<span class="text-[9px] font-black uppercase text-[#F0EEE9]/40" data-translate="discipline">Discipline</span>
+						<span class="text-[10px] font-bold uppercase text-[#F0EEE9]" data-translate="fullStackDevOps">Full Stack / DevOps / IT Support / AI + Data Analysis</span>
+					</div>
+					<div class="flex flex-col">
+						<span class="text-[9px] font-black uppercase text-[#F0EEE9]/40" data-translate="status">Status</span>
+						<span class="text-[10px] font-bold uppercase text-[#F0EEE9]" data-translate="available">Available 2026</span>
+						</div>
+					</div>
+					<div class="animate-bounce">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10 3V17M10 17L4 11M10 17L16 11" stroke="#F0EEE9" stroke-width="2" stroke-linecap="square"/>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Profile Section: Professional Profile (Editorial + Technical Grid) -->
+		<section id="profile" class="relative px-6 py-32 md:py-40 bg-[linear-gradient(180deg,#f0eee9_0%,#e8eef7_100%)] overflow-hidden">
+			<div class="absolute inset-0 pointer-events-none select-none">
+				<div class="absolute inset-0 bg-[linear-gradient(to_right,#19126514_1px,transparent_1px),linear-gradient(to_bottom,#19126514_1px,transparent_1px)] bg-[size:2.2rem_2.2rem]"></div>
+				<div class="absolute -left-20 top-10 h-72 w-72 rounded-full bg-[#191265]/10 blur-3xl"></div>
+				<div class="absolute -right-10 bottom-10 h-80 w-80 rounded-full bg-[#1d4ed8]/10 blur-3xl"></div>
+			</div>
+
+			<div class="max-w-7xl mx-auto relative z-10">
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+					<div class="lg:col-span-5 profile-reveal">
+						<div class="sticky top-28 space-y-8">
+							<div class="relative inline-flex items-center">
+								<span class="absolute -inset-2 bg-[#191265] -rotate-1"></span>
+								<h2 class="relative text-[10px] uppercase tracking-[0.7em] font-black text-[#F0EEE9] px-4 py-1" data-translate="professionalStory">Professional Story</h2>
+							</div>
+
+							<h3 class="text-[clamp(2.7rem,8vw,6.2rem)] font-black text-[#191265] leading-[0.84] tracking-[-0.05em] uppercase">
+								<span data-translate="pushingInnovation">Pushing Innovation</span>
+								<span class="profile-outline block">with Clarity</span>
+							</h3>
+
+							<div class="inline-flex items-center gap-3 bg-[#191265] text-[#F0EEE9] px-4 py-3 border-2 border-[#191265] shadow-[8px_8px_0px_0px_#19126525] profile-float">
+								<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 64 64" fill="none" aria-hidden="true" class="shrink-0">
+									<path d="M14 28L10 14L22 20M50 28L54 14L42 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+									<rect x="12" y="24" width="40" height="30" rx="14" stroke="currentColor" stroke-width="3"/>
+									<circle cx="24" cy="38" r="3" fill="currentColor"/>
+									<circle cx="40" cy="38" r="3" fill="currentColor"/>
+									<path d="M29 45L32 42L35 45" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+								<span class="text-xs font-black uppercase tracking-[0.16em]">Digital Builder</span>
+							</div>
+
+							<p class="max-w-md text-xs md:text-sm font-bold uppercase tracking-[0.24em] text-[#191265]/70 border-l-2 border-[#191265]/40 pl-4" data-translate="engineeringFocus">
+							Delivering support, development, and data-driven insights.
+							</p>
+						</div>
+					</div>
+
+					<div class="lg:col-span-7 space-y-6 md:space-y-8 profile-reveal">
+						<div class="relative rounded-2xl border-2 border-[#191265]/20 bg-[#f9f8f3cc] backdrop-blur-md p-7 md:p-10 shadow-[12px_12px_0px_0px_#1912651f] overflow-hidden">
+							<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#191265] via-[#1d4ed8] to-[#191265]"></div>
+							<div class="flex items-center justify-between gap-4 pb-5 mb-6 border-b border-[#191265]/20">
+								<span class="text-[10px] font-black tracking-[0.2em] text-[#191265]/60">PROFILE_BRIEF</span>
+								<span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#191265]/50">2026 Edition</span>
+							</div>
+
+							<div class="space-y-7 text-base md:text-xl text-[#191265] leading-relaxed font-semibold uppercase tracking-tight">
+								<p data-translate="profileText1">
+									I am a <span class="bg-[#191265] text-[#F0EEE9] px-2 py-1">Full Stack Engineer</span> dedicated to crafting digital solutions that integrate exceptional technical performance with a seamless user experience. My focus is on architecting scalable systems and delivering cutting-edge technology.
+								</p>
+								<p data-translate="profileText2">
+									Specializing in <span class="underline decoration-4 decoration-[#1d4ed8]/40 underline-offset-4">AI and Data Analysis</span>, I provide three core services: <span class="bg-[#191265] text-[#F0EEE9] px-2 py-1">Local Support</span>, <span class="bg-[#191265] text-[#F0EEE9] px-2 py-1">Remote Support</span>, and <span class="bg-[#191265] text-[#F0EEE9] px-2 py-1">Software Development</span>. My <span class="italic">Tech Founder</span> mindset ensures I not only deliver solutions but also deeply understand the business value and strategic implications behind every service I provide.
+								</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script is:inline>
+			// Animación de entrada al cargar
+			window.addEventListener('load', () => {
+				const elements = document.querySelectorAll('.hero-content');
+				elements.forEach((el) => {
+					el.classList.remove('opacity-0', 'translate-y-6');
+					el.classList.add('opacity-100', 'translate-y-0');
+				});
+
+				const revealElements = document.querySelectorAll('.profile-reveal');
+				if (revealElements.length > 0 && 'IntersectionObserver' in window) {
+					const observer = new IntersectionObserver((entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('is-visible');
+								observer.unobserve(entry.target);
+							}
+						});
+					}, { threshold: 0.2 });
+
+					revealElements.forEach((el) => observer.observe(el));
+				}
+			});
+		</script>
+
+		<style>
+			/* Optimizaciones de renderizado para el gradiente */
+			h1 span {
+				-webkit-background-clip: text;
+				background-clip: text;
+			}
+
+			.vertical-text {
+				writing-mode: vertical-rl;
+				text-orientation: mixed;
+			}
+
+			.animate-spin-slow {
+				animation: spin 8s linear infinite;
+			}
+
+			@keyframes spin {
+				from { transform: rotate(0deg); }
+				to { transform: rotate(360deg); }
+			}
+
+			.profile-outline {
+				color: transparent;
+				-webkit-text-stroke: 1px #191265;
+			}
+
+			.profile-reveal {
+				opacity: 0;
+				transform: translateY(24px);
+				transition: opacity 700ms ease, transform 700ms ease;
+			}
+
+			.profile-reveal.is-visible {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.profile-stat-card {
+				border: 1px solid rgba(25, 18, 101, 0.22);
+				background: linear-gradient(160deg, rgba(255, 255, 255, 0.65), rgba(237, 242, 251, 0.82));
+				padding: 0.95rem 1rem;
+				display: flex;
+				flex-direction: column;
+				gap: 0.35rem;
+			}
+
+			.profile-stat-label {
+				font-size: 0.62rem;
+				font-weight: 800;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: rgba(25, 18, 101, 0.55);
+			}
+
+			.profile-stat-value {
+				font-size: 0.8rem;
+				font-weight: 700;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+				color: #191265;
+			}
+
+			.profile-float {
+				animation: profileFloat 3.8s ease-in-out infinite;
+			}
+
+			@keyframes profileFloat {
+				0%, 100% { transform: translateY(0); }
+				50% { transform: translateY(-6px); }
+			}
+
+			/* Modern Minimal Corporate Styles */
+			.neon-text-professional {
+				color: #F0EEE9;
+			}
+
+			.neon-text-credentials {
+				background: linear-gradient(90deg, #F0EEE9 0%, #4ECDC4 25%, #7B68EE 50%, #4ECDC4 75%, #F0EEE9 100%);
+				background-size: 300% 100%;
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				text-shadow: 0 0 20px rgba(78, 205, 196, 0.3), 0 0 40px rgba(123, 104, 238, 0.15);
+				filter: drop-shadow(0 0 8px rgba(78, 205, 196, 0.25));
+				animation: gradient-flow 5s ease-in-out infinite;
+				font-weight: inherit;
+				letter-spacing: 0.02em;
+			}
+
+			@keyframes gradient-flow {
+				0%, 100% {
+					background-position: 0% center;
+				}
+				50% {
+					background-position: 100% center;
+				}
+			}
+		</style>
+
+		<!-- Skills & Abilities (Alternative/Brutalist Style) -->
+	<section id="skills" class="relative px-6 py-56 bg-[linear-gradient(135deg,#e8edff_0%,#f8f9ed_45%,#efe5ff_100%)] overflow-hidden">
+		<!-- Decorative top divider -->
+		<div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#191265]/20 to-transparent"></div>
+			<!-- Technical background texture -->
+			<div class="absolute inset-0 pointer-events-none select-none">
+				<div class="absolute inset-0 bg-[linear-gradient(to_right,#19126512_1px,transparent_1px),linear-gradient(to_bottom,#19126512_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]"></div>
+				<div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,#19126514_0%,transparent_45%),radial-gradient(circle_at_80%_80%,#5E407518_0%,transparent_45%)]"></div>
+				<div class="absolute inset-0 opacity-[0.04] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+			</div>
+
+			<div class="max-w-7xl mx-auto relative z-10">
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
+					<!-- Side Section Header -->
+					<div class="lg:col-span-4 space-y-12">
+						<div class="sticky top-40">
+							<div class="relative inline-block mb-6">
+								<span class="absolute -inset-2 bg-[#191265] rotate-3"></span>
+								<h2 class="relative text-xs uppercase tracking-[0.8em] font-black text-[#F0EEE9] px-4 py-1" data-translate="skillsTitle">Capabilities</h2>
+							</div>
+							<h3 class="text-6xl md:text-8xl font-black text-[#191265] leading-[0.8] tracking-tighter uppercase italic mb-8" data-translate="hardSkills">
+								Tech <br/> <span class="not-italic bg-[#191265] text-[#F0EEE9] px-2">Stack</span>
+							</h3>
+							<p class="text-xl text-[#191265]/60 font-bold uppercase tracking-widest leading-tight border-l-4 border-[#191265] pl-6" data-translate="skillsDescription">
+								Mastery of cutting-edge tools <br/> for complex solutions.
+							</p>
+						</div>
+					</div>
+
+					<!-- Brutalist Skills Grid -->
+					<div class="lg:col-span-8 space-y-32">
+						<!-- Hard Skills -->
+						<div>
+							<h4 class="text-2xl font-black text-[#191265] uppercase tracking-[0.3em] mb-12 flex items-center gap-4">
+								<span class="w-12 h-[2px] bg-[#191265]"></span>
+								Core Technologies
+							</h4>
+							<div class="space-y-10">
+								{skillCategories.map((category) => (
+									<div class="space-y-4">
+										<div class="flex items-center gap-3">
+											<span class="w-8 h-[2px] bg-[#191265]/70"></span>
+											<h5 class="text-xs font-black uppercase tracking-[0.35em] text-[#191265]/70">{category.name}</h5>
+										</div>									{category.subtitle && (
+										<p class="text-xs text-[#191265]/50 font-medium tracking-wide pl-11">{category.subtitle}</p>
+									)}										<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+											{category.skills.map((skill) => (
+												<div class="group relative bg-[#191265] p-6 border-2 border-[#191265] hover:bg-[#F0EEE9] transition-all duration-300 transform hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_#191265]">
+													<div class="flex flex-col gap-4">
+														<Icon name={skill.icon} class="w-8 h-8 text-[#F0EEE9] group-hover:text-[#191265] transition-colors duration-300" />
+														<span class="text-sm font-black text-[#F0EEE9] group-hover:text-[#191265] uppercase tracking-tighter">{skill.name}</span>
+													</div>
+													<div class="absolute top-2 right-2 text-[8px] font-mono text-[#F0EEE9]/20 group-hover:text-[#191265]/20">SYS_V2</div>
+												</div>
+											))}
+										</div>
+									</div>
+								))}
+							</div>
+						</div>
+
+						<!-- Soft Skills & Languages -->
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+							<!-- Soft Skills -->
+							<div>
+								<h4 class="text-2xl font-black text-[#191265] uppercase tracking-[0.3em] mb-12 flex items-center gap-4">
+									<span class="w-8 h-[2px] bg-[#191265]"></span>
+									Soft Skills
+								</h4>
+								<div class="mb-5 border border-[#191265]/20 bg-[linear-gradient(145deg,#191265_0%,#2a247e_100%)] p-4 text-[#F0EEE9] shadow-[10px_10px_0px_0px_#19126522]">
+									<div class="flex items-center justify-between gap-3 border-b border-[#F0EEE9]/20 pb-3">
+										<p class="text-[10px] font-black uppercase tracking-[0.24em] text-[#F0EEE9]/65">Human Capability Layer</p>
+										<span class="text-[10px] font-black uppercase tracking-[0.2em] text-[#F0EEE9]/55">{softSkills.length} Total</span>
+									</div>
+									<p class="mt-3 text-xs font-semibold uppercase tracking-[0.18em] leading-relaxed text-[#F0EEE9]/86">
+										Interpersonal excellence, strategic communication, and collaborative execution.
+									</p>
+								</div>
+
+								<div class="space-y-3">
+									{softSkills.map((skill, index) => (
+										<div class="group relative overflow-hidden border border-[#191265]/20 bg-[#F0EEE9]/82 px-4 py-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#191265] hover:shadow-[10px_10px_0px_0px_#1912651f]">
+											<div class="absolute right-0 top-0 h-full w-14 bg-[linear-gradient(180deg,#19126510_0%,#19126502_100%)]"></div>
+											<div class="flex items-center justify-between gap-4">
+												<div class="flex items-center gap-3 min-w-0">
+													<div class="flex h-9 w-9 shrink-0 items-center justify-center border border-[#191265]/25 bg-white/70">
+														<Icon name={skill.icon} class="w-4 h-4 text-[#191265]/70 group-hover:text-[#191265] transition-colors duration-300" />
+													</div>
+													<div class="min-w-0">
+														<p class="text-[10px] font-black uppercase tracking-[0.22em] text-[#191265]/45">Competency {String(index + 1).padStart(2, '0')}</p>
+														<p class="text-sm md:text-base font-black text-[#191265]/82 group-hover:text-[#191265] uppercase tracking-[0.05em] leading-tight truncate">{skill.name}</p>
+													</div>
+												</div>
+												<span class="text-[10px] font-black uppercase tracking-[0.2em] text-[#191265]/55 border border-[#191265]/20 px-2 py-1 bg-white/65">
+													Advanced
+												</span>
+											</div>
+										</div>
+									))}
+								</div>
+							</div>
+
+							<!-- Languages -->
+							<div>
+								<h4 class="text-2xl font-black text-[#191265] uppercase tracking-[0.3em] mb-12 flex items-center gap-4">
+									<span class="w-8 h-[2px] bg-[#191265]"></span>
+									Languages
+								</h4>
+								<div class="space-y-4">
+									{languages.map((lang) => (
+										<div class="group relative bg-[#F0EEE9] border-2 border-[#191265] p-4 overflow-hidden">
+											<div class="absolute inset-0 bg-[#191265] translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+											<div class="relative flex justify-between items-center z-10">
+												<span class="text-lg font-black text-[#191265] group-hover:text-[#F0EEE9] uppercase italic transition-colors">{lang.name}</span>
+												<span class="text-[10px] font-bold text-[#191265] group-hover:text-[#F0EEE9] uppercase tracking-widest border border-[#191265] group-hover:border-[#F0EEE9] px-2 py-1 transition-colors">Native_Level</span>
+											</div>
+										</div>
+									))}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Education Section: Academic Journey (Alternative/Brutalist Style) -->
+	<section id="education" class="relative px-6 py-56 bg-[#F0EEE9] overflow-hidden">
+		<!-- Decorative top divider -->\n\t\t<div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#191265]/20 to-transparent"></div>
+			<!-- Ultra-marked background texture (Inverted for contrast) -->
+			<div class="absolute inset-0 pointer-events-none select-none">
+				<div class="absolute inset-0 bg-[linear-gradient(to_right,#19126508_1px,transparent_1px),linear-gradient(to_bottom,#19126508_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
+				<div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,#19126505_0%,transparent_50%)]"></div>
+			</div>
+
+			<div class="max-w-6xl mx-auto relative z-10">
+				<div class="flex flex-col space-y-24">
+					<!-- Section Header -->
+					<div class="flex flex-col md:flex-row justify-between items-end gap-8">
+						<div class="max-w-2xl">
+							<div class="relative inline-block mb-6">
+								<span class="absolute -inset-2 bg-[#191265] rotate-1"></span>
+							<h2 class="relative text-xs uppercase tracking-[0.8em] font-black text-[#F0EEE9] px-4 py-1" data-translate="educationTitle">Journey</h2>
+						</div>
+						<h3 class="text-6xl md:text-8xl font-black text-[#191265] leading-[0.8] tracking-tighter uppercase" data-translate="myEducation">
+								Academic <br/> <span class="italic text-[#4f46e5]">Growth</span>
+							</h3>
+						</div>
+						<div class="hidden md:block w-32 h-32 border-8 border-[#191265] rounded-full animate-spin-slow"></div>
+					</div>
+
+					<!-- Brutalist Education Grid -->
+					<div class="grid grid-cols-1 gap-12">
+						{education.map((entry, index) => (
+							<div class={`group relative border-t-4 border-[#191265] pt-12 pb-16 flex flex-col md:flex-row gap-8 transition-all duration-500 hover:bg-[#191265]/5 px-4`}>
+								<!-- Número/Orden -->
+								<div class="md:w-1/12">
+									<span class="text-6xl font-black text-[#191265]/10 group-hover:text-[#191265]/20 transition-colors italic">0{index + 1}</span>
+								</div>
+								
+								<!-- Periodo y Universidad -->
+								<div class="md:w-4/12 space-y-4">
+									<div class="inline-block bg-[#191265] text-[#F0EEE9] px-3 py-1 text-sm font-black tracking-widest uppercase">
+										{entry.period}
+									</div>
+									<p class="text-xl font-black text-[#191265] uppercase tracking-tight leading-none">
+										{entry.institution}
+									</p>
+								</div>
+
+								<!-- Título y Descripción -->
+								<div class="md:w-7/12 space-y-6">
+									<h4 class="text-3xl md:text-5xl font-black text-[#191265] leading-[0.9] tracking-tighter uppercase italic group-hover:translate-x-4 transition-transform duration-500">
+										{entry.degree}
+									</h4>
+									<p class="text-lg text-[#191265]/70 font-bold max-w-xl leading-snug">
+										{entry.description}
+									</p>
+									<!-- Elemento decorativo brutalista -->
+									<div class="w-full h-1 bg-gradient-to-r from-[#191265] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
+								</div>
+
+								<!-- Flecha decorativa -->
+								<div class="absolute top-12 right-8 hidden md:block">
+									<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#191265" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-hover:opacity-100 -rotate-45 transition-all duration-500 group-hover:rotate-0"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Certifications Section: Knowledge Matrix -->
+		<section id="certifications" class="relative overflow-hidden bg-[#191265] px-6 py-56 text-[#F0EEE9] border-y border-[#F0EEE9]/10">
+			<!-- Enhanced background texture -->
+			<div class="absolute inset-0 pointer-events-none select-none">
+				<!-- Main grid pattern -->
+				<div class="absolute inset-0 bg-[linear-gradient(to_right,#F0EEE908_1px,transparent_1px),linear-gradient(to_bottom,#F0EEE908_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+				<!-- Subtle diagonal pattern -->
+				<div class="absolute inset-0 opacity-[0.08] bg-[repeating-linear-gradient(45deg,#4ECDC4_0px,#4ECDC4_1px,transparent_1px,transparent_2px)]"></div>
+				<!-- Radial gradient overlays for depth -->
+				<div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,#4ECDC414_0%,transparent_40%),radial-gradient(circle_at_80%_50%,#7B68EE14_0%,transparent_40%)]"></div>
+				<!-- Top accent line -->
+				<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#4ECDC4]/20 to-transparent"></div>
+			</div>
+
+			<div class="relative z-10 mx-auto max-w-7xl">
+				<!-- Intro header -->
+				<div class="mb-8 flex items-end justify-between gap-6 border-b border-[#F0EEE9]/8 pb-8">
+					<div>
+						<p class="text-[10px] font-black uppercase tracking-[0.45em] text-[#F0EEE9]/40">Knowledge Matrix</p>
+					</div>
+					<div class="flex gap-8 text-right">
+						<div>
+							<p class="text-[10px] font-black uppercase tracking-[0.2em] text-[#F0EEE9]/40">Total</p>
+							<p class="mt-2 text-3xl font-black text-[#F0EEE9]">{certifications.length}</p>
+						</div>
+						<div class="border-l border-[#F0EEE9]/10 pl-8">
+							<p class="text-[10px] font-black uppercase tracking-[0.2em] text-[#F0EEE9]/40">Focus</p>
+							<p class="mt-2 text-sm font-semibold text-[#F0EEE9]">Development<br/>Security</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Category pillars -->
+				<div class="mb-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+					<div class="group border border-[#F0EEE9]/12 bg-[#F0EEE9]/[0.02] p-6 hover:bg-[#7B68EE]/8 transition-colors duration-300">
+						<div class="flex items-start justify-between gap-4">
+							<div>
+								<p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#F0EEE9]/40 mb-2">Development</p>
+								<p class="text-2xl font-black text-[#F0EEE9]">3</p>
+								<p class="text-xs text-[#F0EEE9]/60 mt-3 leading-snug">Web, JavaScript,<br/>Responsive Design</p>
+							</div>
+							<div class="flex h-8 w-1 bg-gradient-to-b from-[#7B68EE] to-[#7B68EE]/40 group-hover:from-[#9F8FFF] transition-all duration-300"></div>
+						</div>
+					</div>
+
+					<div class="group border border-[#F0EEE9]/12 bg-[#F0EEE9]/[0.02] p-6 hover:bg-[#FF6B6B]/8 transition-colors duration-300">
+						<div class="flex items-start justify-between gap-4">
+							<div>
+								<p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#F0EEE9]/40 mb-2">Security</p>
+								<p class="text-2xl font-black text-[#F0EEE9]">1</p>
+								<p class="text-xs text-[#F0EEE9]/60 mt-3 leading-snug">ISO/IEC 27001<br/>Lead Auditor</p>
+							</div>
+							<div class="flex h-8 w-1 bg-gradient-to-b from-[#FF6B6B] to-[#FF6B6B]/40 group-hover:from-[#FF8787] transition-all duration-300"></div>
+						</div>
+					</div>
+
+					<div class="group border border-[#F0EEE9]/12 bg-[#F0EEE9]/[0.02] p-6 hover:bg-[#4ECDC4]/8 transition-colors duration-300 sm:col-span-2 lg:col-span-1">
+						<div class="flex items-start justify-between gap-4">
+							<div>
+								<p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#F0EEE9]/40 mb-2">Providers</p>
+								<p class="text-2xl font-black text-[#F0EEE9]">3</p>
+								<p class="text-xs text-[#F0EEE9]/60 mt-3 leading-snug">Academy, Campus,<br/>Standards</p>
+							</div>
+							<div class="flex h-8 w-1 bg-gradient-to-b from-[#4ECDC4] to-[#4ECDC4]/40 group-hover:from-[#6FE1D9] transition-all duration-300"></div>
+						</div>
+					</div>
+				</div>
+
+			<!-- Professional Credentials Section -->
+			<div class="relative py-20 overflow-hidden" style="background: #191265; border-top: 1px solid #4ECDC4/20; border-bottom: 1px solid #4ECDC4/20;">
+				<!-- Vertical lines minimal texture -->
+				<div class="absolute inset-0 pointer-events-none select-none">
+					<div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(to right, #4ECDC4 1px, transparent 1px); background-size: 3rem 100%;"></div>
+				</div>
+
+				<!-- Main title -->
+				<div class="mb-20 relative z-10 px-6 md:px-10">
+					<h2 class="text-xs uppercase tracking-[0.2em] font-semibold text-[#F0EEE9]/60 mb-4">Professional</h2>
+					<h3 class="text-5xl md:text-7xl font-bold text-[#F0EEE9] leading-[0.9] tracking-[-0.02em] uppercase">
+						Credentials
+					</h3>
+				</div>
+
+				<!-- Certifications Grid -->
+			<div class="relative z-10 px-6 md:px-10 max-w-7xl mx-auto space-y-16">
+				<!-- Development Certifications -->
+				<div>
+					<div class="mb-8 pl-4 border-l-2 border-[#4ECDC4]">
+						<p class="text-sm font-semibold uppercase tracking-widest text-[#F0EEE9]/60">Development Certifications</p>
+					</div>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+						{certifications.filter(c => c.category === 'Development').map((certification) => (
+							<div class="group relative flex flex-col border-t border-[#F0EEE9]/20 pt-6 text-[#F0EEE9] transition-all duration-300 hover:border-[#4ECDC4]">
+								<div class="flex-1 space-y-4">
+									<div class="flex items-center justify-between">
+										<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#F0EEE9]/70">{certification.issuer}</span>
+										<span class="text-xs font-medium uppercase tracking-wider text-[#F0EEE9]/55">{certification.date}</span>
+									</div>
+									<h4 class="text-xl font-bold leading-tight tracking-tight text-[#F0EEE9] md:text-2xl">
+										{certification.name}
+									</h4>
+								</div>
+								<div class="mt-6 pt-4 border-t border-[#F0EEE9]/10 flex items-center justify-end">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#F0EEE9]/40 transition-all duration-300 group-hover:text-[#4ECDC4] group-hover:translate-x-1">
+										<path d="M5 12h14M12 5l7 7-7 7"/>
+									</svg>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+
+				<!-- Security & Standards -->
+				<div>
+					<div class="mb-8 pl-4 border-l-2 border-[#4ECDC4]">
+						<p class="text-sm font-semibold uppercase tracking-widest text-[#F0EEE9]/60">Security & Standards</p>
+					</div>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+						{certifications.filter(c => c.category === 'Security').map((certification) => (
+							<div class="group relative flex flex-col border-t border-[#F0EEE9]/20 pt-6 text-[#F0EEE9] transition-all duration-300 hover:border-[#4ECDC4]">
+								<div class="flex-1 space-y-4">
+									<div class="flex items-center justify-between">
+										<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#F0EEE9]/70">{certification.issuer}</span>
+										<span class="text-xs font-medium uppercase tracking-wider text-[#F0EEE9]/55">{certification.date}</span>
+									</div>
+									<h4 class="text-xl font-bold leading-tight tracking-tight text-[#F0EEE9] md:text-2xl">
+										{certification.name}
+									</h4>
+								</div>
+								<div class="mt-6 pt-4 border-t border-[#F0EEE9]/10 flex items-center justify-end">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#F0EEE9]/40 transition-all duration-300 group-hover:text-[#4ECDC4] group-hover:translate-x-1">
+										<path d="M5 12h14M12 5l7 7-7 7"/>
+									</svg>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+
+				<!-- Footer CTA -->
+				<div class="mt-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 border-t border-[#F0EEE9]/8 pt-12">
+					<div>
+						<p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#F0EEE9]/40 mb-2">Verify Credentials</p>
+						<p class="text-lg md:text-xl font-semibold text-[#F0EEE9]">View full details and verification links</p>
+					</div>
+					<a href="/certificaciones" class="group flex-shrink-0 inline-flex items-center gap-3 px-6 py-3 text-sm font-black uppercase tracking-[0.2em] text-[#F0EEE9] border border-[#F0EEE9]/20 hover:border-[#F0EEE9]/40 hover:bg-[#F0EEE9]/5 transition-all duration-300">
+						View All
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-1">
+							<line x1="5" y1="12" x2="19" y2="12"></line>
+							<polyline points="12 5 19 12 12 19"></polyline>
+						</svg>
+					</a>
+				</div>
+				</div>
+			</div>
+			</div>
+
+		</section>
+
+		<!-- Work Experience Section: Historial laboral (Estilo Alternativo/Brutalista) -->
+		<section id="work-experience" class="relative px-6 py-56 bg-[#191265] text-[#F0EEE9] overflow-hidden">
+			<!-- Decorative top divider -->
+			<div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F0EEE9]/20 to-transparent"></div>
+			<!-- Textura de fondo -->
+			<div class="absolute inset-0 pointer-events-none select-none">
+				<div class="absolute inset-0 bg-[linear-gradient(to_right,#F0EEE920_1px,transparent_1px),linear-gradient(to_bottom,#F0EEE920_1px,transparent_1px)] bg-[size:5rem_5rem]"></div>
+				<div class="absolute top-0 left-0 w-full h-full opacity-[0.03] bg-[repeating-linear-gradient(-45deg,#F0EEE9,#F0EEE9_10px,transparent_10px,transparent_20px)]"></div>
+			</div>
+
+			<div class="max-w-6xl mx-auto relative z-10">
+				<div class="relative mb-24">
+					<div class="absolute -left-4 top-0 text-[6rem] md:text-[10rem] font-black text-[#F0EEE9]/5 select-none leading-none">WORK</div>
+					<div class="relative z-10">
+						<div class="relative inline-block mb-6">
+							<span class="absolute -inset-2 bg-[#F0EEE9] -rotate-2"></span>
+							<h2 class="relative text-xs uppercase tracking-[1em] font-black text-[#191265] px-6 py-1" data-translate="workExperienceTitle">Experience</h2>
+						</div>
+						<h3 class="text-6xl md:text-9xl font-black text-[#F0EEE9] leading-[0.8] tracking-tighter uppercase italic" data-translate="myExperience">
+							Professional <br/> <span class="not-italic bg-[#F0EEE9] text-[#191265] px-4">Journey</span>
+						</h3>
+					</div>
+				</div>
+
+				<div class="space-y-0 border-l-8 border-[#F0EEE9]/30 ml-4 md:ml-0">
+					{workExperience.map((job, index) => (
+						<div class="relative pl-12 pb-24 group">
+							<div class="absolute -left-[28px] top-0 w-12 h-12 bg-[#191265] border-8 border-[#F0EEE9] group-hover:bg-[#F0EEE9] transition-colors duration-500 z-20"></div>
+
+							<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+								<div class="lg:col-span-3">
+									<div class="sticky top-40">
+										<span class="text-4xl font-black text-[#F0EEE9] block leading-none">{job.years}</span>
+										<span class="text-xs uppercase tracking-[0.3em] font-bold text-[#F0EEE9]/50 mt-4 block italic">Timeline_Sequence</span>
+									</div>
+								</div>
+
+								<div class="lg:col-span-9">
+									<div class="bg-[#F0EEE9] text-[#191265] p-8 md:p-12 transform group-hover:-translate-y-2 group-hover:translate-x-2 transition-all duration-500 shadow-[16px_16px_0px_0px_#0f0a2e70]">
+										<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+											<div class="flex items-center gap-4">
+												{job.icon && (
+													<img src={job.icon} alt={`${job.company} icon`} class="w-10 h-10 md:w-12 md:h-12 object-contain" />
+												)}
+												{job.icon2 && (
+													<img src={job.icon2} alt={`${job.company} secondary icon`} class="w-10 h-10 md:w-12 md:h-12 object-contain" />
+												)}
+												{job.icon3 && (
+													<img src={job.icon3} alt={`${job.company} third icon`} class="w-10 h-10 md:w-12 md:h-12 object-contain" />
+												)}
+												<h4 class="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none">
+													{job.title}
+												</h4>
+											</div>
+											<span class="text-xs font-black bg-[#191265] text-[#F0EEE9] px-4 py-2 uppercase tracking-widest">
+												{job.company}
+											</span>
+										</div>
+
+										<p class="text-lg md:text-xl text-[#191265]/80 font-bold leading-tight mb-10 border-l-4 border-[#191265]/20 pl-6 italic">
+											{job.description}
+										</p>
+
+										<div class="flex justify-between items-end">
+											<div class="flex gap-2">
+												<div class="w-3 h-3 bg-[#191265]/30"></div>
+												<div class="w-3 h-3 bg-[#191265]/30"></div>
+												<div class="w-3 h-3 bg-[#191265]"></div>
+											</div>
+											<span class="text-[10px] font-mono text-[#191265]/50 tracking-widest">ENCRYPTED_DATA_STREAM_0{index + 1}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact Section: Pie de página con información de contacto y redes sociales -->
+		<section id="contact" class="px-6 md:px-12 py-24 md:py-32 bg-rich-blue dark:bg-dark-background text-pale-gray dark:text-dark-text overflow-hidden">
+			
+			<h2 class="text-5xl md:text-8xl font-bold uppercase tracking-tighter mb-16 text-center">
+				Let's build <br /> something crazy together.
+			</h2>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-20">
+				<div class="min-w-0">
+					<p class="text-neutral-subtle dark:text-dark-subtle-text uppercase text-xs tracking-widest mb-4">Contact</p>
+					<a href="mailto:miguelangelolivareshernandez@zohomail.com" class="block max-w-full break-words text-base md:text-lg leading-tight hover:text-accent-blue transition-colors">miguelangelolivareshernandez@zohomail.com</a>
+					<a href="mailto:omiguelangel598@gmail.com" class="block max-w-full break-words text-base md:text-lg leading-tight hover:text-accent-blue transition-colors">omiguelangel598@gmail.com</a>
+				</div>
+				<div class="min-w-0">
+					<p class="text-neutral-subtle dark:text-dark-subtle-text uppercase text-xs tracking-widest mb-4">Social</p>
+					<div class="flex flex-col gap-3">
+						<a href="#" class="block max-w-full break-words text-lg md:text-xl leading-tight hover:text-accent-blue">LinkedIn: Miguel Angel Olivares Hernandez</a>
+						<a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="block max-w-full break-words text-lg md:text-xl leading-tight hover:text-accent-blue">Discord: mikeolivares_53386</a>
+						<a href="https://vsco.co/" target="_blank" rel="noopener noreferrer" class="block max-w-full break-words text-lg md:text-xl leading-tight hover:text-accent-blue">VSCO</a>
+						<a href="#" class="block max-w-full break-words text-lg md:text-xl leading-tight hover:text-accent-blue">Personal Brand Statement</a>
+					</div>
+				</div>
+				<div class="min-w-0">
+					<p class="text-neutral-subtle dark:text-dark-subtle-text uppercase text-xs tracking-widest mb-4">Location</p>
+					<p class="max-w-full break-words text-lg md:text-xl leading-relaxed">Aguascalientes, Mexico City, and Guadalajara <br /> Remote, Worldwide</p>
+				</div>
+			</div>
+
+			<div class="text-center">
+				<button id="open-contact-modal" class="group relative inline-flex items-center justify-center gap-4 px-8 py-5 bg-[#F0EEE9] text-[#191265] font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:pr-16">
+					<span>Start a Conversation</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="absolute right-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+						<path d="M5 12h14m-7-7 7 7-7 7"/>
+					</svg>
+				</button>
+			</div>
+
+			<!-- Créditos finales -->
+			<div class="mt-20 md:mt-32 pt-8 border-t border-pale-gray/10 flex flex-col gap-3 md:flex-row md:justify-between md:items-center text-xs uppercase tracking-widest text-pale-gray/60 dark:text-dark-subtle-text">
+				<p>© 2026 All rights reserved</p>
+				<p>Built on midnight coffee, unpaid overtime, and questionable life choices.</p>
+			</div>
+		</section>
+
+		<!-- Contact Modal -->
+		<div id="contact-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none">
+			<div id="modal-content" class="relative bg-[#14183D] text-[#F0EEE9] w-full max-w-2xl transform scale-95 transition-all duration-300 overflow-hidden border border-[#F0EEE9]/10">
+				<!-- Subtle background pattern -->
+				<div class="absolute inset-0 pointer-events-none select-none opacity-[0.03]">
+					<div class="absolute inset-0 bg-[linear-gradient(to_right,#F0EEE9_1px,transparent_1px),linear-gradient(to_bottom,#F0EEE9_1px,transparent_1px)] bg-[size:2rem_2rem]"></div>
+				</div>
+
+				<button id="close-contact-modal" class="absolute top-6 right-6 text-[#F0EEE9]/60 hover:text-[#F0EEE9] z-20">
+					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg>
+				</button>
+				
+				<div class="relative z-10 p-8 md:p-12">
+					<div class="mb-10">
+						<p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#F0EEE9]/50 mb-2">Let's Connect</p>
+						<h3 class="text-4xl md:text-5xl font-bold tracking-tight">Start a Conversation</h3>
+					</div>
+					<form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="space-y-8">
+						<div class="relative">
+							<input type="text" id="name" name="name" required class="peer w-full bg-transparent border-b-2 border-[#F0EEE9]/20 pt-3 pb-2 text-lg transition-colors focus:outline-none focus:border-[#4ECDC4]" placeholder=" ">
+							<label for="name" class="absolute left-0 -top-4 text-xs font-bold uppercase tracking-widest text-[#F0EEE9]/50 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-top-4 peer-focus:text-xs peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest">Name</label>
+						</div>
+						<div class="relative">
+							<input type="email" id="email" name="email" required class="peer w-full bg-transparent border-b-2 border-[#F0EEE9]/20 pt-3 pb-2 text-lg transition-colors focus:outline-none focus:border-[#4ECDC4]" placeholder=" ">
+							<label for="email" class="absolute left-0 -top-4 text-xs font-bold uppercase tracking-widest text-[#F0EEE9]/50 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-top-4 peer-focus:text-xs peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest">Email</s-label>
+						</div>
+						<div class="relative">
+							<textarea id="message" name="message" rows="3" required class="peer w-full bg-transparent border-b-2 border-[#F0EEE9]/20 pt-3 pb-2 text-lg transition-colors focus:outline-none focus:border-[#4ECDC4]" placeholder=" "></textarea>
+							<label for="message" class="absolute left-0 -top-4 text-xs font-bold uppercase tracking-widest text-[#F0EEE9]/50 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-top-4 peer-focus:text-xs peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest">Your Message</label>
+						</div>
+						<div class="pt-4">
+							<button type="submit" class="group relative inline-flex items-center justify-center w-full md:w-auto gap-4 px-8 py-4 bg-[#4ECDC4] text-[#191265] font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:pr-20">
+								<span>Send Message</span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="absolute right-7 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+									<path d="M5 12h14m-7-7 7 7-7 7"/>
+								</svg>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</main>
+</Layout>
+
+<script is:inline>
+			// Animación de entrada al cargar
+			window.addEventListener('load', () => {
+				const elements = document.querySelectorAll('.hero-content');
+				elements.forEach((el) => {
+					el.classList.remove('opacity-0', 'translate-y-6');
+					el.classList.add('opacity-100', 'translate-y-0');
+				});
+
+				const revealElements = document.querySelectorAll('.profile-reveal');
+				if (revealElements.length > 0 && 'IntersectionObserver' in window) {
+					const observer = new IntersectionObserver((entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('is-visible');
+								observer.unobserve(entry.target);
+							}
+						});
+					}, { threshold: 0.2 });
+
+					revealElements.forEach((el) => observer.observe(el));
+				}
+			});
+
+		// Contact Modal Logic
+		const openModalBtn = document.getElementById('open-contact-modal');
+		const closeModalBtn = document.getElementById('close-contact-modal');
+		const contactModal = document.getElementById('contact-modal');
+		const modalContent = document.getElementById('modal-content');
+
+		openModalBtn.addEventListener('click', () => {
+			contactModal.classList.remove('opacity-0', 'pointer-events-none');
+			modalContent.classList.remove('scale-95');
+		});
+
+		const closeModal = () => {
+			modalContent.classList.add('scale-95');
+			contactModal.classList.add('opacity-0');
+			setTimeout(() => {
+				contactModal.classList.add('pointer-events-none');
+			}, 300);
+		};
+
+		closeModalBtn.addEventListener('click', closeModal);
+		contactModal.addEventListener('click', (e) => {
+			if (e.target === contactModal) {
+				closeModal();
+			}
+		});
+	</script>
+
+<style>
+	/* Custom animations for the hero text reveal */
+	.hero-subtitle {
+		animation: revealUp 0.8s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+		animation-delay: 0.2s;
+	}
+	
+	.hero-title {
+		animation: revealUp 1s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+		animation-delay: 0.4s;
+	}
+
+	.hero-description {
+		animation: revealUp 1s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+		animation-delay: 0.6s;
+	}
+
+	.hero-cta {
+		animation: fadeIn 1.2s ease-out forwards;
+		animation-delay: 0.8s;
+	}
+
+	@keyframes revealUp {
+		0% {
+			transform: translateY(40px);
+			opacity: 0;
+		}
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+</style>
