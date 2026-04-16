@@ -52,6 +52,23 @@ npm run preview
 - `npm run preview`: sirve el build generado.
 - `npm run astro`: ejecuta comandos de Astro CLI.
 
+## Deploy en Vercel
+
+Este proyecto funciona en Vercel sin configuracion adicional.
+
+1. Entra a Vercel y selecciona Add New Project.
+2. Importa el repositorio `MiguelOlivaresexe/newportafolio2026`.
+3. Verifica los ajustes de build:
+
+- Framework Preset: Astro
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Install Command: `npm install`
+
+4. Haz clic en Deploy.
+
+Opcional: si usas variables de entorno, agregalas en Settings > Environment Variables dentro de Vercel.
+
 ## Deploy con Docker y Cloudflare Pages
 
 Este proyecto incluye un Dockerfile de dos etapas:
