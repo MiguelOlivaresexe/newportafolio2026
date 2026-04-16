@@ -1,43 +1,91 @@
-# Astro Starter Kit: Minimal
+# Portafolio After College
 
-```sh
-npm create astro@latest -- --template minimal
+Sitio personal construido con Astro y Tailwind CSS.
+
+## Requisitos
+
+- Node.js 20 o superior
+- npm 9 o superior
+
+## Instalacion
+
+1. Clona el repositorio.
+2. Entra a la carpeta del proyecto.
+3. Instala dependencias:
+
+```bash
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Desarrollo local
 
-## 🚀 Project Structure
+Levanta el servidor de desarrollo:
 
-Inside of your Astro project, you'll see the following folders and files:
+```bash
+npm run dev
+```
+
+Abre en el navegador:
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+http://localhost:4321
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Build de produccion
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Genera la version optimizada:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+npm run build
+```
 
-## 🧞 Commands
+Previsualiza el build localmente:
 
-All commands are run from the root of the project, from a terminal:
+```bash
+npm run preview
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Scripts disponibles
 
-## 👀 Want to learn more?
+- `npm run dev`: inicia servidor local.
+- `npm run build`: compila el sitio a `dist`.
+- `npm run preview`: sirve el build generado.
+- `npm run astro`: ejecuta comandos de Astro CLI.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Deploy con Docker y Cloudflare Pages
+
+Este proyecto incluye un Dockerfile de dos etapas:
+
+1. Compila el sitio con Node.
+2. Publica `dist` en Cloudflare Pages usando Wrangler.
+
+### 1) Construir imagen
+
+```bash
+docker build -t portafolio-cloudflare .
+```
+
+### 2) Ejecutar deploy
+
+```bash
+docker run --rm \
+	-e CLOUDFLARE_API_TOKEN=tu_token \
+	-e CF_PAGES_PROJECT=portafolio \
+	portafolio-cloudflare
+```
+
+Variables:
+
+- `CLOUDFLARE_API_TOKEN`: token de API con permisos para Pages.
+- `CF_PAGES_PROJECT`: nombre del proyecto en Cloudflare Pages.
+
+## Estructura principal
+
+```text
+src/
+	components/
+	data/
+	layouts/
+	pages/
+public/
+```
