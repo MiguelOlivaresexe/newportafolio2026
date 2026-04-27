@@ -4,30 +4,7 @@
  */
 export const workExperience = [
   {
-    title: "Freelance Java Developer",
-    company: "Freelance",
-    years: "2026 - Present",
-    stackVisuals: [
-      { icon: "simple-icons:openjdk", label: "Java" },
-      { icon: "simple-icons:springboot", label: "Spring Boot" },
-      { icon: "simple-icons:postgresql", label: "PostgreSQL" },
-      { icon: "simple-icons:mysql", label: "MySQL" },
-      { icon: "simple-icons:docker", label: "Docker" },
-      { icon: "simple-icons:apachemaven", label: "Maven" },
-      { icon: "simple-icons:git", label: "Git" },
-      { icon: "simple-icons:postman", label: "Postman" }
-    ],
-    description: "Built and maintained Java backend solutions for freelance clients, focusing on clean architecture, API reliability, and production-ready delivery.",
-    highlights: [
-      "Developed REST APIs with Java and Spring Boot for business workflows and third-party integrations.",
-      "Designed relational data models and optimized SQL queries for better response times.",
-      "Containerized services with Docker and standardized build pipelines with Maven.",
-      "Implemented authentication, validation, and error-handling patterns to improve API stability.",
-      "Collaborated directly with clients to define scope, ship incremental releases, and document technical handoff."
-    ]
-  },
-  {
-    title: "Lead Frontend Mobile Dev & Tester",
+    title: "Software Architect",
     company: "News MX TV",
     years: "2025 - 2026",
     stackIcons: [
@@ -35,7 +12,24 @@ export const workExperience = [
       { src: "/icons/typescriptcute.svg", label: "TypeScript" },
       { src: "/icons/swiftcute.svg", label: "Swift" }
     ],
-    description: "Engineered cross-platform mobile applications using Kotlin, Astro, Angular, Node.js, and Swift. Modernized the technology infrastructure and elevated the overall user experience. Applied Figma for design consistency and implemented quality assurance processes to ensure code reliability."
+    stackVisuals: [
+      { icon: "simple-icons:kotlin", label: "Kotlin" },
+      { icon: "simple-icons:astro", label: "Astro" },
+      { icon: "simple-icons:angular", label: "Angular" },
+      { icon: "simple-icons:javascript", label: "Node.js" },
+      { icon: "simple-icons:swift", label: "Swift" },
+      { icon: "simple-icons:figma", label: "Figma" }
+    ],
+    description: "Engineered cross-platform mobile applications using Kotlin, Astro, Angular, Node.js, and Swift. Modernized the technology infrastructure and elevated the overall user experience. Applied Figma for design consistency and implemented quality assurance processes to ensure code reliability.",
+    highlights: [
+      "Designed and implemented scalable full-stack architecture for a digital news platform, improving performance and maintainability.",
+      "Developed and optimized RESTful APIs and database structures, reducing response times by up to 40%.",
+      "Led end-to-end development lifecycle, from system design to deployment in production environments.",
+      "Integrated responsive UI/UX interfaces, enhancing user engagement and accessibility across devices.",
+      "Implemented data management solutions using modern databases, ensuring efficient content delivery and storage.",
+      "Collaborated with cross-functional teams to define technical requirements and deliver high-quality features on schedule.",
+      "Applied best practices in clean architecture, code quality, and version control, improving system reliability and scalability."
+    ]
   },
   {
     title: "IT Operations Trainee & Data Specialist",

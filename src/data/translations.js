@@ -25,7 +25,6 @@ export const translations = {
     heroDescription: "Brindo servicios de TI alineados con lo que buscan empresas en México y USA: soporte local y remoto, desarrollo de software y análisis de datos enfocados en eficiencia y resultados medibles.",
     preview: "Vista Previa",
     viewCurriculum: "Ver Currículum",
-    downloadPdf: "Descargar PDF",
 
     // Profile Section
     professionalStory: "HISTORIA PROFESIONAL",
@@ -91,7 +90,6 @@ export const translations = {
     heroDescription: "I provide reliable IT services aligned with Mexico and U.S. market needs: local and remote support, software development, and data analysis focused on efficiency and measurable business results.",
     preview: "Preview",
     viewCurriculum: "View Curriculum Vitae",
-    downloadPdf: "Download PDF",
 
     // Profile Section
     professionalStory: "PROFESSIONAL STORY",
